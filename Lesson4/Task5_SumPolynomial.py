@@ -1,9 +1,11 @@
 #Даны два файла, в каждом из которых находится запись многочлена. Задача - сформировать файл, содержащий сумму многочленов.
 def getList(poly):
+    #Обрезаем '= 0', убираем пробелы, разделяем по знаку '+'
     lst = poly[:-4].replace(' ', '').replace('-', '+-').split('+')
     if '' in lst: lst.remove('')
     return lst
-    
+
+#Поиск степени    
 def getDegree(s):
     if s.find('^') >= 0:   
         degree = s[s.find('^')+1:len(s)]
@@ -11,7 +13,8 @@ def getDegree(s):
         degree = 1 
     else: degree = 0               
     return int(degree)
-    
+
+#Поиск коэффициента    
 def getCoeff(s): 
     if s.find('*') >= 0:   
         coeff = s[0:s.find('*')]
@@ -29,8 +32,11 @@ def sumPolynomial(poly1, poly2):
     lst2 = getList(poly2)
     degree1 = getDegree(lst1[0])
     degree2 = getDegree(lst2[0]) 
+    #Т.к. многочлены могут быть разных степеней, начинаем с многочлена с наибольшей степенью
     if degree2 > degree1:
         lst1, lst2 = lst2, lst1
+    #Сцепляем строки до тех пор, пока есть элементы многочленов
+    #После добавления в строку, удаляем элемент    
     while len(lst1) or len(lst2) > 0:
         if len(lst1) > 0:
             degree1 = getDegree(lst1[0])
@@ -64,6 +70,7 @@ def sumPolynomial(poly1, poly2):
     s = s.replace('x^0', '')  
     return s
 
+#Чтение файлов
 with open('polynomial.txt', 'r') as f:
     s1 = f.readline()
     print(s1)
@@ -72,5 +79,6 @@ with open('polynomial2.txt', 'r') as f:
     print(s2)
 summa = sumPolynomial(s1,s2)
 print(summa)
+#Запись в файл
 with open('polynomial_sum.txt', 'w') as f:
    f.write(summa)
