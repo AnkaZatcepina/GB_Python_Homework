@@ -67,7 +67,15 @@ def check_winner():
         if board[BOARD_LENGTH - i - 1][i] != current_player_sign:
             win = False 
 
-    return win                                  
+    return win 
+
+#Проверка на ничью
+def check_draw():                                     
+    for i in range(BOARD_LENGTH):
+        for j in range(BOARD_LENGTH):
+            if board[i][j] == EMPTY_CELL:
+               return False 
+    return True           
 
 #Проверка клетки
 def check_cell(cell_number):
@@ -106,7 +114,10 @@ def player_turn():
 
     if check_winner():
         return name
-    
+
+    if check_draw():   
+        return 'Ничья'
+
     if current_player_sign == CROSS:
         current_player_sign = ZERO 
     else:
@@ -136,8 +147,11 @@ while winner == "":
     winner = player_turn()
 
 #Конец игры 
-print()   
-print(f"Выиграл игрок {winner}") 
+print() 
+if winner == "Ничья":
+    print("Ничья!")
+else:    
+    print(f"Выиграл игрок {winner}") 
 print_board(board) 
    
 
