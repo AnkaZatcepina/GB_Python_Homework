@@ -95,7 +95,7 @@ def get_cell(cell_number):
     cell = ((int(cell_number) - 1) // 3, (int(cell_number) - 1) % 3 )
     return cell        
 
-#Xод игрока. возвращает количество конфет
+#Xод игрока. Возвращает имя победителя, если есть победа
 def player_turn():
     global board, first_player_turn, current_player_sign
 

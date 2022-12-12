@@ -7,5 +7,5 @@ for i in inputString:
         sum += int(i)  
     except:
         pass
-print(f'Сумма цифр в строке = {sum}')        
+print(f'Сумма цифр в строке = {sum}')    
 
