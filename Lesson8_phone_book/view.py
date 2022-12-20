@@ -1,5 +1,6 @@
 import phonenumbers
 
+#Основное меню
 def choose_main_menu():
     print('Это телефонный справочник') 
     print('Выверите номер пункта меню: ')   
@@ -12,6 +13,7 @@ def choose_main_menu():
         return int(mode)
     return 'Некорректно введён пункт меню'
 
+#Меню для вывода данных
 def choose_view_menu():
     print('Выберите формат вывода данных')    
     print('1. В командную строку')  
@@ -21,11 +23,12 @@ def choose_view_menu():
         return int(mode)
     return 'Некорректно введён пункт меню'
 
-
+#Ввод фамилии
 def input_surname_for_search():
     surname = input('Введите фамилию: ')
     return surname        
 
+#Ввод данных для новой записи
 def input_new_entry():   
     surname     = input('Введите фамилию: ')   
     name        = input('Введите имя: ') 
@@ -39,9 +42,11 @@ def input_new_entry():
     entry = (surname,name,phone.__str__(),description)
     return entry
 
+#Вывод записей в командную строку
 def print_phone_book(phone_list):    
     for i in phone_list:
         print(i)
 
+#Вывод простого сообщения
 def print_message(message):
     print(message)       
