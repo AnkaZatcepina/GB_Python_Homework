@@ -41,8 +41,8 @@ def random_check_8_queens():
                 queens[queens_count]=(x,y)
                 queens_count += 1
         if check_8_queens(queens):
-            print(f'Решение № {solution}: {queens}') 
             solution += 1 
+            print(f'Решение № {solution}: {queens}') 
     return
 
 if __name__ == '__main__':
