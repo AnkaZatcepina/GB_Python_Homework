@@ -5,6 +5,7 @@
     (добавьте проверки).
     ✔ Существующие файлы не должны удаляться/изменяться в случае совпадения имён.
 """
+__all__ = ['gen_name', 'check_dir', 'create_files', 'create_files_many_ext']
 
 from random import choices, randint
 from string import ascii_lowercase, digits

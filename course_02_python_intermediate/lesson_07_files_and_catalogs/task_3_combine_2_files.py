@@ -12,6 +12,9 @@
     ✔ При достижении конца более короткого файла,
     возвращайтесь в его начало.
 """
+
+__all__ = ['readline_or_begin', 'combine_2_files']
+
 from typing import TextIO
 
 def readline_or_begin(file: TextIO) -> str:

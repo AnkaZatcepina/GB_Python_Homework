@@ -1,0 +1,5 @@
+#Соберите из созданных на уроке и в рамках домашнего задания функций пакет для работы с файлами.
+
+__all__ = ['task_1_append_file', 'task_2_generate_pseudoname_to_file', 
+            'task_3_combine_2_files', 'task_6_create_files', 
+            'task_7_order_files_to_folders', 'hw_task_1_rename_files']

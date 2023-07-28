@@ -6,6 +6,7 @@
     обязательно должны быть гласные.
     ✔ Полученные имена сохраните в файл.
 """
+__all__ = ['append_file_pseudonames', 'generate_name', 'validate_name']
 
 import random
 
