@@ -3,6 +3,9 @@
     использования csv.DictReader.
     📌 Распечатайте его как pickle строку.
 """
+
+__all__ = ['csv_to_pickle']
+
 import csv
 import pickle
 

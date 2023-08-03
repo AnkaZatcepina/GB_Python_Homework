@@ -7,6 +7,8 @@
     📌 Каждую пару сохраняйте с новой строки.
 """
 
+__all__ = ['txt_to_json']
+
 import json
 
 def txt_to_json(path_file_txt: str, path_file_json: str) -> None:

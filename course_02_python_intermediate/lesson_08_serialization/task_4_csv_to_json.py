@@ -10,6 +10,8 @@
     функции.
 """
 
+__all__ = ['csv_to_json']
+
 import json
 import csv
 
