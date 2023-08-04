@@ -1,0 +1,12 @@
+"name","parent","type","size"
+"folder_1","-","Directory",84
+"folder_2","-","Directory",0
+"result.csv","-","File",367
+"result.json","-","File",876
+"test2","-","File",324
+"test1","-","File",24
+"result.pickle","-","File",389
+"folder_3","folder_1","Directory",12
+"test2","folder_1","File",72
+"test12","folder_1","File",0
+"test3","folder_1/folder_3","File",12

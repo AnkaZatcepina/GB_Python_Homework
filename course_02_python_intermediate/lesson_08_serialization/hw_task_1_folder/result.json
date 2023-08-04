@@ -1,0 +1,61 @@
+[
+  {
+    "name": "folder_1",
+    "type": "Directory",
+    "size": 84
+  },
+  {
+    "name": "folder_2",
+    "type": "Directory",
+    "size": 0
+  },
+  {
+    "name": "result.csv",
+    "type": "File",
+    "size": 367
+  },
+  {
+    "name": "result.json",
+    "type": "File",
+    "size": 876
+  },
+  {
+    "name": "test2",
+    "type": "File",
+    "size": 324
+  },
+  {
+    "name": "test1",
+    "type": "File",
+    "size": 24
+  },
+  {
+    "name": "result.pickle",
+    "type": "File",
+    "size": 389
+  },
+  {
+    "name": "folder_3",
+    "parent": "folder_1",
+    "type": "Directory",
+    "size": 12
+  },
+  {
+    "name": "test2",
+    "parent": "folder_1",
+    "type": "File",
+    "size": 72
+  },
+  {
+    "name": "test12",
+    "parent": "folder_1",
+    "type": "File",
+    "size": 0
+  },
+  {
+    "name": "test3",
+    "parent": "folder_1/folder_3",
+    "type": "File",
+    "size": 12
+  }
+]

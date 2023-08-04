@@ -3,6 +3,9 @@
     директории и сохраняет их содержимое в виде
     одноимённых pickle файлов.
 """
+
+__all__ = ['files_to_pickle']
+
 import json
 import pickle
 import os
