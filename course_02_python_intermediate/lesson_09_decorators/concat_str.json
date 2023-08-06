@@ -1,0 +1,20 @@
+[
+  {
+    "args": [
+      "aa",
+      "b",
+      "cccc"
+    ],
+    "word": "test",
+    "result": "aabcccc"
+  },
+  {
+    "args": [
+      "aa",
+      "b",
+      "cccc"
+    ],
+    "word": "test",
+    "result": "aabcccc"
+  }
+]
