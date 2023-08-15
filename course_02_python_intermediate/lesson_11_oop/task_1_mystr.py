@@ -20,11 +20,18 @@ class MyString(str):
         """
         Shows original string, author name and creation time
         """
-        return f'"{super().__str__()}", created by: {self.creator} at {self.time}'    
+        return f'"{super().__str__()}", created by: {self.creator} at {self.time}'  
+
+    def __repr__(self):
+        """
+        Example
+        """
+        return f"MyString('{super().__str__()}','{self.creator}')"         
 
 if __name__ == '__main__':
     example = MyString('Hello','Anka')
     print(example)  
     print(MyString.__doc__)
-    print(MyString.__str__.__doc__)
+    print(MyString.__str__.__doc__)   
+    print(repr(example))
 #    print(help(MyString))
