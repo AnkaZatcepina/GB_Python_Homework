@@ -12,13 +12,6 @@
     меньше, чем ваш уровень, вызывайте исключение уровня
     доступа.
 """
-import sys
-import pathlib
-if __package__ is None:                  
-    DIR = pathlib.Path(__file__).resolve().parent
-    sys.path.insert(0, str(DIR.parent))
-    __package__ = DIR.name
-
 import json
 from typing import Set
 from task_4_access_level import User
