@@ -14,8 +14,9 @@
 """
 import json
 from typing import Set
-from task_4_access_level import User
-from task_3_class import AccessException, LevelException
+from lesson_13_exceptions.task_4_access_level import User
+#from task_4_access_level import User
+from lesson_13_exceptions.task_3_class import AccessException, LevelException
 
 class Project:
     def __init__(self, path_json:str):

@@ -4,7 +4,7 @@
     ○ ошибка уровня,
     ○ ошибка доступа.
 """
-from task_4_access_level import User
+from lesson_13_exceptions.task_4_access_level import User
 
 class MyException(Exception):
     pass
