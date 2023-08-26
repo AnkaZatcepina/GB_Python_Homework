@@ -1,0 +1,10 @@
+INFO:__main__:{'args': (5, 3), 'result': 1.6666666666666667}
+INFO:__main__:{'args': (5, 2), 'result': 2.5}
+INFO:__main__:{'args': (5, 3), 'result': 1.6666666666666667}
+INFO:__main__:{'args': (5, 2), 'result': 2.5}
+ERROR:__main__:Деление на ноль! division by zero
+INFO:__main__:{'args': (5, 0), 'result': inf}
+INFO:__main__:{'args': (5, 3), 'result': 1.6666666666666667}
+INFO:__main__:{'args': (5, 2), 'result': 2.5}
+ERROR:__main__:Деление на ноль! division by zero
+INFO:__main__:{'args': (5, 0), 'result': inf}

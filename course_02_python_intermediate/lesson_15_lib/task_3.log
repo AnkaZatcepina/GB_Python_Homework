@@ -1,0 +1,4 @@
+INFO - 2023-08-26 10:06:38,264 - division: {'args': (5, 3)}. Result: 1.6666666666666667
+INFO - 2023-08-26 10:06:38,264 - division: {'args': (5, 2)}. Result: 2.5
+ERROR - 2023-08-26 10:06:38,264 - Деление на ноль! division by zero
+INFO - 2023-08-26 10:06:38,264 - division: {'args': (5, 0)}. Result: inf
