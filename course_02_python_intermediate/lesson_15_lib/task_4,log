@@ -1,0 +1,7 @@
+ERROR:__main__:Невозможно корректно разбить строку 1-й четверг ноября. empty separator
+ERROR:__main__:Невозможно корректно разбить строку 1-й четверг ноября. empty separator
+ERROR:__main__:Не существет дня недели апп. tuple.index(x): x not in tuple
+ERROR:__main__:Не существет месяца мааа. tuple.index(x): x not in tuple
+ERROR:__main__:Не существет такого дня 7-я среда мая
+ERROR:__main__:Невозможно корректно разбить строку среда мая. not enough values to unpack (expected 3, got 2)
+ERROR:__main__:Невозможно корректно разбить строку "среда мая". not enough values to unpack (expected 3, got 2)
