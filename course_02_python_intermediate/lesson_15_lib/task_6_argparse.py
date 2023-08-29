@@ -21,6 +21,14 @@ logger = logging.getLogger(__name__)
 
 File = namedtuple('File', 'name, extension, is_dir, parent_dir')
 
+def parse():
+    parser = argparse.ArgumentParser(prog='read dir', 
+                                    description='Получение информацию о содержимом директории', 
+                                    epilog='Пример запуска: python3.10 task_6_argparse.py "<my_path>"))')
+    parser.add_argument('-p', '--path', default='.', help='Путь к директории', type=Path)
+    args = parser.parse_args()
+    return read_dir(args.path)
+    
 def read_dir(path:Path):
     for file in path.iterdir():
         f = File(file.stem if file.is_file() else file.name, 
@@ -32,5 +40,6 @@ def read_dir(path:Path):
             read_dir(Path(f.parent_dir)/f.name)
 
 if __name__ == '__main__':
-    print(Path.cwd())
-    read_dir(Path('/config/workspace/python/GB/python_homework/course_02_python_intermediate'))
+    parse()
+    #print(Path.cwd())
+    #read_dir(Path('/config/workspace/python/GB/python_homework/course_02_python_intermediate'))
