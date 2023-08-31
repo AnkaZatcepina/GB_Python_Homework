@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Title</title>  
+  <link rel="stylesheet" href = "../static/css/style.css">
+</head>
+<body>
+    {% for news in news_list %}   
+    <div class="news">
+        <h2>{{news.title}}</h2>
+        <p>{{news.description}}</p>
+        {{news.date}}
+    </div>     
+    {% endfor %}  
+</body>
+</html>
