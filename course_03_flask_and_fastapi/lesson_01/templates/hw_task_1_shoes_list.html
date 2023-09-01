@@ -1,0 +1,10 @@
+{% extends 'hw_task_1_base.html' %}
+{% block title %}
+    {{ super() }} - Обувь 
+{% endblock %}
+{% block content %}
+    {% for shoes in shoes_list %}        
+        <h2><a href="/{{shoes.href}}">{{shoes.name}}</a></h2>
+        <img src={{shoes.img}} alt={{shoes.name}} width="100" height="100">
+    {% endfor %}
+{% endblock %}
