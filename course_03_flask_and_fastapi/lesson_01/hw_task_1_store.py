@@ -43,15 +43,10 @@ def main():
 def cloth():
     return render_template('hw_task_1_cloth_list.html', cloth_list=cloth_list)  
 
-@app.route('/jacket/')
-def jacket():
-    jacket = get_item("jacket")
-    return render_template('hw_task_1_item.html', **jacket) 
-
-@app.route('/trousers/')
-def trousers():
-    trousers = get_item("trousers")
-    return render_template('hw_task_1_item.html', **trousers)     
+@app.route('/cloth/<string:item_name>/')
+def item(item_name: str):
+    item = get_item(item_name)
+    return render_template('hw_task_1_item.html', **item)    
 
 @app.route('/shoes/')
 def shoes():
