@@ -1,0 +1,16 @@
+{% extends 'hw_task_1_base.html' %}
+{% block title %}
+    {{ super() }} - Куртка 
+{% endblock %}
+{% block content %}
+    <h2>{{name}}</h2>
+    <img src={{img}} alt={{name}} width="300" height="300">
+    <p>Размерный лист: </p>
+    {% for size in size_list %}        
+        <p>{{size}}</p>
+    {% endfor %}
+    <p>Цвета: </p>
+    {% for color in color_list %}        
+        <p>{{color}}</p>
+    {% endfor %}
+{% endblock %}
