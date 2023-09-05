@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{task}}
+{% endblock %}
+
+{% block content %}
+<form action="calc_square" method="post">
+    <input type="number" name="number" required>
+    <button type="submit" name="result">Отправить</button>
+</form>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{task}}
+{% endblock %}
+
+{% block content %}
+<form action="input_name_age" method="post">
+    <input type="text" name="name" placeholder="Имя" required></input>
+    <input type="number" name="age" placeholder="Возраст" required>
+    <button type="submit" name="result">Отправить</button>
+</form>
+{% endblock %}
