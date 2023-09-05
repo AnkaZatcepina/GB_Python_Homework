@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{task}}
+{% endblock %}
+
+{% block content %}
+<form action="calculator" method="post">
+    <input type="number" name="number_1" required>
+    <input type="number" name="number_2" required>
+    <select id="operation" name="operation">
+        <option value="add">+</option>
+        <option value="subtract">-</option>
+        <option value="multiply">*</option>
+        <option value="divide">/</option>
+    </select>
+    <button type="submit" name="result">Вычислить</button>
+</form>
+{% endblock %}
