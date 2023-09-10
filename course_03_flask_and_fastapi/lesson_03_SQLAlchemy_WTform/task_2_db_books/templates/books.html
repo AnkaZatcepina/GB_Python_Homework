@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row">
+        {% for book in books %}
+            <h1>{{ book }}</h1>
+            {% for author in book.authors %}
+                <p class="col-12 col-md-6">{{ author }}</p>
+            {% endfor %}
+        {% endfor %}
+    </div>
+{% endblock %}
