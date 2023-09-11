@@ -20,6 +20,8 @@ from flask_wtf.csrf import CSRFProtect
 from flask_sqlalchemy import SQLAlchemy
 from models import db, User
 from forms import RegisterForm
+import os
+import hashlib
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'mysecretkey'
@@ -47,8 +49,14 @@ def register():
     if request.method == 'POST' and form.validate():
         username = form.username.data
         email = form.email.data
-        password = form.password.data
-        new_user = User(username=username, email=email, password=password)
+
+        salt = os.urandom(32)
+        key = hashlib.pbkdf2_hmac('sha256', form.password.data.encode('utf-8'), salt, 100000)        
+        password = salt + key 
+
+        birthdate = form.birthdate.data
+        agreement = form.agreement.data
+        new_user = User(username=username, email=email, password=password, birthdate=birthdate, agreement=agreement )
         db.session.add(new_user)
         db.session.commit()
 
