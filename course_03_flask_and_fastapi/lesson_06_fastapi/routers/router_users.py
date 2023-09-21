@@ -28,7 +28,8 @@ async def create_user(user: UserIn):
 @router.put("/{user_id}", response_model=UserOut)
 async def update_user(user_id: int, changed_user: UserIn):
     query = users.update().where(users.c.id == user_id).values(**changed_user.dict())
-    await database.execute(query)
+    if not await database.execute(query):
+        raise HTTPException(status_code=404, detail="User not found")
     return {**changed_user.dict(), "id": user_id}
 
 @router.delete("/{user_id}", response_model=dict)
