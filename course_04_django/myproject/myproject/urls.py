@@ -23,4 +23,5 @@ urlpatterns = [
     path('random/', include('lesson_01_task_2_app.urls')),
     path('homework1/', include('lesson_01_homework_app.urls')),
     path('lesson2/', include('lesson_02_app.urls')),
+    path('lesson2/', include('lesson_02_hw_app.urls')),
 ]
