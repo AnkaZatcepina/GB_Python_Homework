@@ -24,11 +24,28 @@
     — дата оформления заказа
 
 Допишите несколько функций CRUD для работы с моделями по желанию. 
+
+
+📌 Изменяем задачу с выводом двух html страниц:
+главной и о себе.
+📌 Перенесите вёрстку в шаблоны.
+📌 Представления должны пробрасывать полезную информацию в
+шаблон через контекст.
+📌 Выделите общий код шаблонов и создайте родительский
+шаблон base.html.
 """
 from django.shortcuts import render
 from django.http import HttpResponse 
+from django.views import View
 from . import models
 import decimal
+
+class MainView(View):
+    def get(self, request):
+        return render(request, "lesson_02_hw_app/index.html")
+
+def about(request):
+    return render(request, "lesson_02_hw_app/about.html")
 
 def get_clients(request):
     clients = models.Client.objects.all()

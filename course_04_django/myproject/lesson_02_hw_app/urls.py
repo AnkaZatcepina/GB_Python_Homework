@@ -2,7 +2,9 @@ from django.urls import path, include
 from . import views 
 
 
-urlpatterns = [ 
+urlpatterns = [
+    path('', views.MainView.as_view(), name='main'),
+    path('about/', views.about, name='about'),
     path('clients/', views.get_clients, name='clients'),
     path('products/', views.get_products, name='products'),
     path('orders_by_client/', views.get_orders_by_client, name='orders_by_client'), 

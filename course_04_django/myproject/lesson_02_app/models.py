@@ -23,6 +23,19 @@
         ○ категория статьи с максимальной длиной 100 символов
         ○ количество просмотров статьи со значением по умолчанию 0
         ○ флаг, указывающий, опубликована ли статья со значением по умолчанию False
+Задание №5
+    📌 Создай четыре функции для реализации CRUD в модели Django Article (статья).
+    📌 *Используйте Django команды для вызова функций.     
+Задание №6
+    📌 Создайте модель Комментарий.
+    📌 Авторы могут добавлять комментарии к своим и чужим статьям. 
+        Т.е. у комментария может быть один автор.
+    📌 И комментарий относится к одной статье. У модели должны быть следующие поля
+        ○ автор
+        ○ статья
+        ○ комментарий
+        ○ дата создания
+        ○ дата изменения   
 """
 from django.db import models
 from django.utils import timezone
@@ -69,6 +82,14 @@ class Article(models.Model):
     is_published = models.BooleanField(default=False)
 
     def __str__(self):
-        return f'{self.title}, {self.author}: {self.content[:20]}...'
+        return f'{self.title}, {self.is_published}, {self.author}: {self.content[:20]}...'
 
+class Comment(models.Model):
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    article = models.ForeignKey(Article, on_delete=models.CASCADE)
+    content = models.TextField()
+    created_date = models.DateField(auto_now_add=True)
+    modificated_date = models.DateField(auto_now_add=True)
 
+    def __str__(self):
+        return f'{self.content}, {self.author.id}, {self.article.id}, {self.created_date}'

@@ -1,5 +1,6 @@
 from django.core.management.base import BaseCommand
 from ... import models
+import random
 
 class Command(BaseCommand):
     help = "Generate fake authors and articles"
@@ -23,6 +24,16 @@ class Command(BaseCommand):
                     created_date='2023-09-26', 
                     author=author,
                     category=f'Category{j}',
+                    is_published = random.choice([True,False])
                 )
                 article.save()
+        for i in range(1, count * 5 + 1):
+            random_author = models.Author.objects.order_by('?')[0]
+            random_article = models.Article.objects.order_by('?')[0]            
+            comment = models.Comment(
+                author = random_author,
+                article = random_article,
+                content = f'Comment{i}'
+            )
+            comment.save()
         
