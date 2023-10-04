@@ -19,37 +19,3 @@ INFO 2023-09-24 17:14:08,238 views 126846 139770902734592 Страницу с п
 INFO 2023-09-24 17:14:08,239 basehttp 126846 139770902734592 "GET /homework1/my_first_django/ HTTP/1.1" 200 92
 INFO 2023-09-24 17:14:24,714 views 126846 139770902734592 Страницу обо мне кто-то посетил
 INFO 2023-09-24 17:14:24,714 basehttp 126846 139770902734592 "GET /homework1/about/ HTTP/1.1" 200 87
-INFO 2023-09-30 19:04:08,174 autoreload 172654 139655233890112 Watching for file changes with StatReloader
-INFO 2023-09-30 19:04:11,818 basehttp 172654 139655191099136 "GET /lesson2/articles/4/ HTTP/1.1" 200 465
-INFO 2023-09-30 19:04:35,082 basehttp 172654 139655191099136 "GET /lesson2/articles/4/ HTTP/1.1" 200 545
-INFO 2023-09-30 19:13:21,351 autoreload 172918 140414505105216 Watching for file changes with StatReloader
-INFO 2023-09-30 19:13:28,230 basehttp 172918 140414462322432 "GET /lesson2/articles/90 HTTP/1.1" 301 0
-INFO 2023-09-30 19:13:28,388 basehttp 172918 140414462322432 "GET /lesson2/articles/90/ HTTP/1.1" 200 466
-INFO 2023-09-30 19:13:39,054 basehttp 172918 140414462322432 "GET /lesson2/articles/1000 HTTP/1.1" 301 0
-WARNING 2023-09-30 19:13:39,149 log 172918 140414462322432 Not Found: /lesson2/articles/1000/
-WARNING 2023-09-30 19:13:39,149 basehttp 172918 140414462322432 "GET /lesson2/articles/1000/ HTTP/1.1" 404 4389
-INFO 2023-09-30 19:14:37,859 autoreload 172918 140414505105216 /config/workspace/python/GB/python_homework/course_04_django/myproject/lesson_02_app/views.py changed, reloading.
-INFO 2023-09-30 19:14:38,077 autoreload 173060 140644268656448 Watching for file changes with StatReloader
-INFO 2023-09-30 19:14:40,180 autoreload 173060 140644268656448 /config/workspace/python/GB/python_homework/course_04_django/myproject/lesson_02_app/views.py changed, reloading.
-INFO 2023-09-30 19:14:40,378 autoreload 173093 140090693453632 Watching for file changes with StatReloader
-INFO 2023-09-30 19:14:44,487 autoreload 173093 140090693453632 /config/workspace/python/GB/python_homework/course_04_django/myproject/lesson_02_app/views.py changed, reloading.
-INFO 2023-09-30 19:14:44,693 autoreload 173109 140667881973568 Watching for file changes with StatReloader
-INFO 2023-09-30 19:14:46,800 autoreload 173109 140667881973568 /config/workspace/python/GB/python_homework/course_04_django/myproject/lesson_02_app/views.py changed, reloading.
-INFO 2023-09-30 19:14:46,997 autoreload 173128 140059574146880 Watching for file changes with StatReloader
-INFO 2023-09-30 19:14:50,101 autoreload 173128 140059574146880 /config/workspace/python/GB/python_homework/course_04_django/myproject/lesson_02_app/views.py changed, reloading.
-INFO 2023-09-30 19:14:50,299 autoreload 173161 140685188273984 Watching for file changes with StatReloader
-INFO 2023-09-30 19:14:51,391 autoreload 173161 140685188273984 /config/workspace/python/GB/python_homework/course_04_django/myproject/lesson_02_app/views.py changed, reloading.
-INFO 2023-09-30 19:14:51,591 autoreload 173165 139750006277952 Watching for file changes with StatReloader
-WARNING 2023-09-30 19:14:53,405 log 173165 139749963495168 Not Found: /lesson2/articles/1000/
-WARNING 2023-09-30 19:14:53,405 basehttp 173165 139749963495168 "GET /lesson2/articles/1000/ HTTP/1.1" 404 4389
-INFO 2023-09-30 19:15:13,436 basehttp 173165 139749963495168 "GET /lesson2/articles/100 HTTP/1.1" 301 0
-INFO 2023-09-30 19:15:13,556 basehttp 173165 139749963495168 "GET /lesson2/articles/100/ HTTP/1.1" 200 332
-WARNING 2023-09-30 19:15:19,999 log 173165 139749963495168 Not Found: /lesson2/articles/1000/
-WARNING 2023-09-30 19:15:19,999 basehttp 173165 139749963495168 "GET /lesson2/articles/1000/ HTTP/1.1" 404 4389
-INFO 2023-09-30 19:15:29,213 basehttp 173165 139749963495168 "GET /lesson2/articles/999 HTTP/1.1" 301 0
-WARNING 2023-09-30 19:15:29,309 log 173165 139749963495168 Not Found: /lesson2/articles/999/
-WARNING 2023-09-30 19:15:29,309 basehttp 173165 139749963495168 "GET /lesson2/articles/999/ HTTP/1.1" 404 4386
-INFO 2023-09-30 19:16:15,158 autoreload 173165 139750006277952 /config/workspace/python/GB/python_homework/course_04_django/myproject/lesson_02_app/views.py changed, reloading.
-INFO 2023-09-30 19:16:15,362 autoreload 173361 140709536163648 Watching for file changes with StatReloader
-INFO 2023-09-30 19:16:19,490 autoreload 173361 140709536163648 /config/workspace/python/GB/python_homework/course_04_django/myproject/lesson_02_app/views.py changed, reloading.
-INFO 2023-09-30 19:16:19,691 autoreload 173395 140484311926592 Watching for file changes with StatReloader

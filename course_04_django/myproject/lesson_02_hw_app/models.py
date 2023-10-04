@@ -27,6 +27,7 @@
 """
 
 from django.db import models
+from django.utils import timezone
 
 
 class Client(models.Model):
@@ -52,7 +53,7 @@ class Product(models.Model):
 class Order(models.Model):
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
     products = models.ManyToManyField(Product)
-    order_date = models.DateField(auto_now_add=True)
+    order_date = models.DateField(default=timezone.now().date())
 
     def cost(self):
         summ = self.products.all().aggregate(models.Sum('price'))

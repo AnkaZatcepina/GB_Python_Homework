@@ -33,12 +33,22 @@
 шаблон через контекст.
 📌 Выделите общий код шаблонов и создайте родительский
 шаблон base.html.
+
+
+📌 Создайте шаблон, который выводит список заказанных
+клиентом товаров из всех его заказов с сортировкой по
+времени:
+○ за последние 7 дней (неделю)
+○ за последние 30 дней (месяц)
+○ за последние 365 дней (год)
+📌 *Товары в списке не должны повторятся.
 """
 from django.shortcuts import render
 from django.http import HttpResponse 
 from django.views import View
 from . import models
 import decimal
+from datetime import datetime, timedelta
 
 class MainView(View):
     def get(self, request):
@@ -56,10 +66,17 @@ def get_products(request):
     return HttpResponse(products)
 
 #lesson2/orders_by_client?client_id=3
-def get_orders_by_client(request):
-    client_id = request.GET.get('client_id')
+#lesson2/orders_by_client/3
+def get_orders_by_client(request, client_id: int):
+    #client_id = request.GET.get('client_id')
+    client = models.Client.objects.filter(pk=client_id)
     orders = models.Order.objects.filter(client__pk=client_id)
-    return HttpResponse(orders)          
+    context = {
+        'client': client,
+        'orders': orders
+    }
+    return render(request, "lesson_02_hw_app/orders_by_client.html", context) 
+      
 
 def create_order(request):
     client_id = request.GET.get('client_id')
@@ -92,4 +109,32 @@ def delete_order(request, order_id: int):
         order.delete()
         return HttpResponse('Заказ удален')
     else:
-        return HttpResponse('Заказ не найден')        
+        return HttpResponse('Заказ не найден')    
+
+def filter_orders_min_date(request, client_id: int, min_date: datetime.date):
+    client = models.Client.objects.filter(id=client_id).first()
+    if min_date == None:
+        orders = models.Order.objects.filter(client__pk=client_id).order_by('-order_date')
+    else:
+        orders = models.Order.objects.filter(client__pk=client_id,
+                                           order_date__gte=min_date).order_by('-order_date') 
+    context = {
+        'client': client,
+        'orders': orders
+    }
+    return render(request, "lesson_02_hw_app/products_by_client.html", context)                                          
+
+def get_products_by_client(request, client_id: int):
+    return filter_orders_min_date(request, client_id, None)      
+
+def get_products_by_client_week(request, client_id: int):
+    min_date = datetime.today() - timedelta(days=7)
+    return filter_orders_min_date(request, client_id, min_date) 
+
+def get_products_by_client_month(request, client_id: int):
+    min_date = datetime.today() - timedelta(days=30)
+    return filter_orders_min_date(request, client_id, min_date)      
+    
+def get_products_by_client_year(request, client_id: int):
+    min_date = datetime.today() - timedelta(days=365)
+    return filter_orders_min_date(request, client_id, min_date)    
