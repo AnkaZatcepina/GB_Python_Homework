@@ -52,19 +52,30 @@ class Product(models.Model):
 
 class Order(models.Model):
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
-    products = models.ManyToManyField(Product)
+    #products = models.ManyToManyField(Product)
     order_date = models.DateField(default=timezone.now().date())
 
     def cost(self):
-        summ = self.products.all().aggregate(models.Sum('price'))
+        #summ = self.products.all().aggregate(models.Sum('price'))
+        summ = 0
+        for item in self.orderproduct_set.all():
+            p = Product.objects.filter(pk=item.product_id).first()
+            if not p:
+                continue
+            p = p.price
+            summ += item.quantity * p
         return summ
 
-    def __str__(self):
+    """def __str__(self):
         products = self.products.all()
         result = f'ID: {self.pk} Client: {self.client}, Cost: {self.cost()}, \n Products: \n'
         for product in list(products):
            result += f'{str(product)}\n'
 
-        return result
+        return result"""
 
 
+class OrderProduct(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.IntegerField()

@@ -89,7 +89,11 @@ def add_product_to_order(request):
     order_id = request.GET.get('order_id')
     product_id = request.GET.get('product_id')
     order = models.Order.objects.filter(pk=order_id).first()
-    product = models.Product.objects.filter(pk=product_id).first()         
+    product = models.Product.objects.filter(pk=product_id).first()  
+    order_product = models.OrderProduct(order=order,
+                                        product=product,
+                                        quantity=1,
+    )   
     order.products.add(product)
     order.save()
     return HttpResponse(order)        
@@ -113,16 +117,22 @@ def delete_order(request, order_id: int):
 
 def filter_orders_min_date(request, client_id: int, min_date: datetime.date):
     client = models.Client.objects.filter(id=client_id).first()
+    products = models.Product.objects.filter(orderproduct__order__client=client).distinct()
     if min_date == None:
-        orders = models.Order.objects.filter(client__pk=client_id).order_by('-order_date')
+        #orders = models.Order.objects.filter(client__pk=client_id).order_by('-order_date')
+        pass 
     else:
-        orders = models.Order.objects.filter(client__pk=client_id,
-                                           order_date__gte=min_date).order_by('-order_date') 
+        #orders = models.Order.objects.filter(client__pk=client_id,
+        #                                   order_date__gte=min_date).order_by('-order_date') 
+        products.filter(orderproduct__order__creating_date__gte=min_date)
+            
     context = {
         'client': client,
-        'orders': orders
+        #'orders': orders,
+        'products': products
     }
-    return render(request, "lesson_02_hw_app/products_by_client.html", context)                                          
+    #return render(request, "lesson_02_hw_app/products_by_client.html", context)  
+    return render(request, "lesson_02_hw_app/products_by_client_new.html", context)                                        
 
 def get_products_by_client(request, client_id: int):
     return filter_orders_min_date(request, client_id, None)      

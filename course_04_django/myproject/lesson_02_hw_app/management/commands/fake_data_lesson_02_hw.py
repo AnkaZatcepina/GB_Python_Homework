@@ -50,7 +50,14 @@ class Command(BaseCommand):
             )
             order.save()
             for j in range(3):
-                random_product = models.Product.objects.order_by('?')[0]            
-                order.products.add(random_product)
-            order.save()
+                #random_product = models.Product.objects.order_by('?')[0]            
+                #order.products.add(random_product)
+            #order.save()
+                random_product = models.Product.objects.order_by('?')[0]
+                order_product = models.OrderProduct(
+                    order=order,  
+                    product=random_product,
+                    quantity=j,        
+                )
+                order_product.save()
         
