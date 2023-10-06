@@ -11,9 +11,9 @@
         {% for article in articles %}
             {% if article.is_published %}
 <!--            <p><a href="{% url 'get_article' article.id %}">{{ article.title }}</a></p> -->
-                <p><a href="{{ article.id }}">{{ article.title }}</a></p>
+                <p><a href="{{ article.id }}">{{ article.title }}, {{ article.author }}, {{ article.content }}</a></p>
             {% else %}
-                <p>{{ article.title }}</p>
+                <p>{{ article.id }}, {{ article.title }}, {{ article.author }}, {{ article.content }}</p>
             {% endif %}
         {% empty %}
             <p>Нет статей</p>    

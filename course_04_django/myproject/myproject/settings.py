@@ -132,6 +132,9 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+CSRF_TRUSTED_ORIGINS = ['https://csa.zatsepin.dev']
+
+
 """LOGGING = { 
     'version': 1, 
     'disable_existing_loggers': False, 

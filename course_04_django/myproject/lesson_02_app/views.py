@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse 
 from django.shortcuts import get_object_or_404 
+from django.template.response import TemplateResponse
 import random
 from . import models
+from . import forms
+from django.contrib import messages
   
 def random_coin(request): 
     answer = ['Орёл', 'Решка']
@@ -32,9 +35,20 @@ def get_article(request, article_id: int):
     article.show_count += 1
     article.save()
     comments = models.Comment.objects.filter(article_id=article_id).order_by('-modificated_date')
+    if request.method == 'POST':
+        form_comment = forms.CommentForm(request.POST)
+        if form_comment.is_valid():
+            comment = models.Comment(author=form_comment.cleaned_data['author'],
+                                    article=article,
+                                    content=form_comment.cleaned_data['content'],
+            )
+            comment.save()
+    else:
+        form_comment = forms.CommentForm()
     context = {
         'article': article,
-        'comments': comments
+        'comments': comments,
+        'form_comment': form_comment,
     }
 
     return render(request, "lesson_02_app/article_detail.html", context)    
@@ -56,3 +70,28 @@ def get_articles_by_author(request):
 def get_comments(request): 
     comments = models.Comment.objects.all()
     return HttpResponse(comments)    
+
+def create_author(request):
+    if request.method == 'POST':
+        form = forms.AuthorForm(request.POST)
+        if form.is_valid():
+            author = models.Author(name=form.cleaned_data['name'],
+                            lastname=form.cleaned_data['lastname'],
+                            email=form.cleaned_data['email'],
+                            biography=form.cleaned_data['biography'],
+                            birthday=form.cleaned_data['birthday'])
+            author.save()
+            messages.add_message(request, messages.SUCCESS, 'Успешно')
+    else:
+        form = forms.AuthorForm()
+    return TemplateResponse(request, 'lesson_02_app/template_form.html', context={'form': form})
+
+def create_article(request):
+    if request.method == 'POST':
+        form = forms.ArticleForm(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form = forms.ArticleForm()
+    return TemplateResponse(request, 'lesson_02_app/template_form.html', context={'form': form})
+    
