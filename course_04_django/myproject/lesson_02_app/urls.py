@@ -14,4 +14,6 @@ urlpatterns = [
     path('get_last_coins/', views.get_last_coins, name='get_last_coins'), 
     path('authors/', views.get_authors, name='authors'),
     path('articles/', include(articles_patterns)),
-]
+    path('create_author/', views.create_author, name='create_author'),
+    path('create_article/', views.create_article, name='create_article'),
+    ]

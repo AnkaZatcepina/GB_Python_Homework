@@ -19,5 +19,10 @@
                 {% endif %}
             {% endfor %}
         {% endif %}
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form_comment.as_p }}
+            <input type="submit" value="Добавить комментарий">
+        </form>
     </body>
 </html>
