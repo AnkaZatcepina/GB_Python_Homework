@@ -18,7 +18,8 @@ urlpatterns = [
     path('create_order/', views.create_order, name='create_order'),
     path('add_product_to_order/', views.add_product_to_order, name='add_product_to_order'),
     path('update_product_price/<int:product_id>/<int:price>', views.update_product_price, name='update_product_price'),
-    path('delete_order/<int:order_id>', views.delete_order, name='delete_order'),
-    
+    path('delete_order/<int:order_id>', views.delete_order, name='delete_order'),    
     path('products_by_client/<int:client_id>/', include(products_by_client_patterns)),
+    path('update_product/<int:product_id>', views.update_product, name='update_product'),
+    
 ]

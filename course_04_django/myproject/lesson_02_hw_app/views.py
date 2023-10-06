@@ -47,8 +47,11 @@ from django.shortcuts import render
 from django.http import HttpResponse 
 from django.views import View
 from . import models
+from . import forms
 import decimal
 from datetime import datetime, timedelta
+from django.template.response import TemplateResponse
+from django.core.files.storage import FileSystemStorage
 
 class MainView(View):
     def get(self, request):
@@ -148,3 +151,34 @@ def get_products_by_client_month(request, client_id: int):
 def get_products_by_client_year(request, client_id: int):
     min_date = datetime.today() - timedelta(days=365)
     return filter_orders_min_date(request, client_id, min_date)    
+
+def update_product(request, product_id: int):
+    product = models.Product.objects.filter(pk=product_id).first()
+    if product:
+        if request.method == 'POST':
+            form = forms.ProductForm(request.POST, request.FILES)
+            if form.is_valid():
+                product.name = form.cleaned_data['name']
+                product.description = form.cleaned_data['description']
+                product.price = form.cleaned_data['price']
+                product.quantity = form.cleaned_data['quantity']
+                image = form.cleaned_data['image']
+                #print('QQQQQQQQQQQQQ')
+                #print(image)
+                #fs = FileSystemStorage()
+                #fs.save(image.name, image)
+                product.image = image
+                product.save()
+        else:
+            form = forms.ProductForm(initial={
+                'name': product.name,
+                'description': product.description,
+                'price': product.price,
+                'quantity': product.quantity,
+                'image': product.image,
+            }) 
+            #form = forms.ProductForm()
+        return TemplateResponse(request, 'lesson_02_hw_app/update_product.html', context={'product': product, 'form': form})
+        
+    else:
+        return HttpResponse('Товар не найден')
