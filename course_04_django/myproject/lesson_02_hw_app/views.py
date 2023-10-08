@@ -47,8 +47,11 @@ from django.shortcuts import render
 from django.http import HttpResponse 
 from django.views import View
 from . import models
+from . import forms
 import decimal
 from datetime import datetime, timedelta
+from django.template.response import TemplateResponse
+from django.core.files.storage import FileSystemStorage
 
 class MainView(View):
     def get(self, request):
@@ -89,7 +92,11 @@ def add_product_to_order(request):
     order_id = request.GET.get('order_id')
     product_id = request.GET.get('product_id')
     order = models.Order.objects.filter(pk=order_id).first()
-    product = models.Product.objects.filter(pk=product_id).first()         
+    product = models.Product.objects.filter(pk=product_id).first()  
+    order_product = models.OrderProduct(order=order,
+                                        product=product,
+                                        quantity=1,
+    )   
     order.products.add(product)
     order.save()
     return HttpResponse(order)        
@@ -113,16 +120,22 @@ def delete_order(request, order_id: int):
 
 def filter_orders_min_date(request, client_id: int, min_date: datetime.date):
     client = models.Client.objects.filter(id=client_id).first()
+    products = models.Product.objects.filter(orderproduct__order__client=client).distinct()
     if min_date == None:
-        orders = models.Order.objects.filter(client__pk=client_id).order_by('-order_date')
+        #orders = models.Order.objects.filter(client__pk=client_id).order_by('-order_date')
+        pass 
     else:
-        orders = models.Order.objects.filter(client__pk=client_id,
-                                           order_date__gte=min_date).order_by('-order_date') 
+        #orders = models.Order.objects.filter(client__pk=client_id,
+        #                                   order_date__gte=min_date).order_by('-order_date') 
+        products.filter(orderproduct__order__creating_date__gte=min_date)
+            
     context = {
         'client': client,
-        'orders': orders
+        #'orders': orders,
+        'products': products
     }
-    return render(request, "lesson_02_hw_app/products_by_client.html", context)                                          
+    #return render(request, "lesson_02_hw_app/products_by_client.html", context)  
+    return render(request, "lesson_02_hw_app/products_by_client_new.html", context)                                        
 
 def get_products_by_client(request, client_id: int):
     return filter_orders_min_date(request, client_id, None)      
@@ -138,3 +151,34 @@ def get_products_by_client_month(request, client_id: int):
 def get_products_by_client_year(request, client_id: int):
     min_date = datetime.today() - timedelta(days=365)
     return filter_orders_min_date(request, client_id, min_date)    
+
+def update_product(request, product_id: int):
+    product = models.Product.objects.filter(pk=product_id).first()
+    if product:
+        if request.method == 'POST':
+            form = forms.ProductForm(request.POST, request.FILES)
+            if form.is_valid():
+                product.name = form.cleaned_data['name']
+                product.description = form.cleaned_data['description']
+                product.price = form.cleaned_data['price']
+                product.quantity = form.cleaned_data['quantity']
+                image = form.cleaned_data['image']
+                #print('QQQQQQQQQQQQQ')
+                #print(image)
+                #fs = FileSystemStorage()
+                #fs.save(image.name, image)
+                product.image = image
+                product.save()
+        else:
+            form = forms.ProductForm(initial={
+                'name': product.name,
+                'description': product.description,
+                'price': product.price,
+                'quantity': product.quantity,
+                'image': product.image,
+            }) 
+            #form = forms.ProductForm()
+        return TemplateResponse(request, 'lesson_02_hw_app/update_product.html', context={'product': product, 'form': form})
+        
+    else:
+        return HttpResponse('Товар не найден')
