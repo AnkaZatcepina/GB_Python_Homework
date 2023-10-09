@@ -3,7 +3,7 @@
     Продукт
 {% endblock %}
 {% block content %}   
-    <div style="width: 40%"><img src="/proxy/8000/static/{{ product.image }}" alt="Нет картинки {{ product.name }}"></div>      
+    <div style="width: 40%"><img src="/static/{{ product.image }}" alt="Нет картинки {{ product.name }}"></div>      
     <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}

@@ -11,3 +11,7 @@
 - python3 manage.py <mycommand> - запуск собственных команд
                             -h - справка по команде
 
+## Урок 5. Административная панель
+- python3 manage.py createsuperuser - создание суперпользователя
+- python3 manage.py changepassword <username> - сброс пароля
+
