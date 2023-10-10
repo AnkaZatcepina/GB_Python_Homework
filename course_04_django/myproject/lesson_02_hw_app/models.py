@@ -28,7 +28,7 @@
 
 from django.db import models
 from django.utils import timezone
-
+from django.utils.html import mark_safe
 
 class Client(models.Model):
     name = models.CharField(max_length=40)
@@ -48,6 +48,10 @@ class Product(models.Model):
     added_date = models.DateField(auto_now_add=True)
     image = models.ImageField()
 
+    def image_tag(self):
+        return mark_safe('<img src="/static/%s" width="150" height="150" />' % (self.image))
+
+    image_tag.short_description = 'Image'
 
     def __str__(self):
         return f'{self.name}, {self.price}'
