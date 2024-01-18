@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "lesson_01_homework_app",
     "lesson_02_app",
     "lesson_02_hw_app",
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -55,6 +56,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = "myproject.urls"
@@ -140,6 +142,10 @@ CSRF_TRUSTED_ORIGINS = ['https://csa.zatsepin.dev']
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'static'
+
+INTERNAL_IPS = [
+'127.0.0.1',
+]
 
 """LOGGING = { 
     'version': 1, 
