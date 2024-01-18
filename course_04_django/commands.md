@@ -15,3 +15,6 @@
 - python3 manage.py createsuperuser - создание суперпользователя
 - python3 manage.py changepassword <username> - сброс пароля
 
+## Урок 6. Дебаг и Развёртывание проекта
+- pip install django-debug-toolbar - тул для дебага
+
